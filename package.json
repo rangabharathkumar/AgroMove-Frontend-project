@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node set-env.js && ng serve",
-    "build": "node set-env.js && ng build && echo 'Build complete. Checking dist folder...' && ls -d dist/*",
+    "start": "ng serve",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "node set-env.js"
   },
   "private": true,
   "dependencies": {
