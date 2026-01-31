@@ -8,7 +8,7 @@ const envPath = path.join(__dirname, 'src', 'environments', 'environment.prod.ts
 const devEnvPath = path.join(__dirname, 'src', 'environments', 'environment.ts');
 
 // Use provide environment variable or a default
-const apiUrl = process.env.API_URL || 'https://agromove-farm-produce-logistics-api.onrender.com/api';
+const apiUrl = process.env.API_URL || 'https://agromove-farm-produce-logistics-api.onrender.com/api/api';
 
 const envConfigFile = `export const environment = {
   production: true,

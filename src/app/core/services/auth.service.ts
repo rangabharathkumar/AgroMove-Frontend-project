@@ -26,7 +26,7 @@ export class AuthService {
                         id: response.id,
                         username: response.username,
                         email: response.email,
-                        role: response.roles.includes('MANAGER') ? 'MANAGER' : 'USER'
+                        role: (response.roles && response.roles.includes('MANAGER')) ? 'MANAGER' : 'USER'
                     };
                     localStorage.setItem('token', response.token);
                     localStorage.setItem('currentUser', JSON.stringify(user));
