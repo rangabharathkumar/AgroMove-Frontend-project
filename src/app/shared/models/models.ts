@@ -12,7 +12,11 @@ export interface LoginRequest {
 
 export interface LoginResponse {
     token: string;
-    user: User;
+    type: string;
+    id: number;
+    username: string;
+    email: string;
+    roles: string[];
 }
 
 export interface Shipment {

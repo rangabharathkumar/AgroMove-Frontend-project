@@ -37,7 +37,8 @@ export class SignupComponent {
         this.loading = true;
         this.error = '';
 
-        this.authService.register(this.signupForm.value).subscribe({
+        const { role, ...signupData } = this.signupForm.value;
+        this.authService.register(signupData).subscribe({
             next: () => {
                 this.success = true;
                 setTimeout(() => {

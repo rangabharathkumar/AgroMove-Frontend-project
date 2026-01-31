@@ -22,9 +22,15 @@ export class AuthService {
         return this.http.post<LoginResponse>(`${environment.apiUrl}/auth/login`, credentials)
             .pipe(
                 tap(response => {
+                    const user: User = {
+                        id: response.id,
+                        username: response.username,
+                        email: response.email,
+                        role: response.roles.includes('MANAGER') ? 'MANAGER' : 'USER'
+                    };
                     localStorage.setItem('token', response.token);
-                    localStorage.setItem('currentUser', JSON.stringify(response.user));
-                    this.currentUserSubject.next(response.user);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
                 })
             );
     }

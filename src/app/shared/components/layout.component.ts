@@ -13,11 +13,11 @@ export class LayoutComponent {
     isSidebarOpen = true;
 
     menuItems = [
-        { icon: 'home', label: 'Dashboard', route: '/dashboard' },
-        { icon: 'truck', label: 'Shipments', route: '/shipments' },
-        { icon: 'package', label: 'Inventory', route: '/inventory' },
-        { icon: 'calendar', label: 'Deliveries', route: '/deliveries' },
-        { icon: 'leaf', label: 'Produce', route: '/produce' }
+        { icon: 'home', label: 'Dashboard', route: '/app/dashboard' },
+        { icon: 'truck', label: 'Shipments', route: '/app/shipments' },
+        { icon: 'package', label: 'Inventory', route: '/app/inventory' },
+        { icon: 'calendar', label: 'Deliveries', route: '/app/deliveries' },
+        { icon: 'leaf', label: 'Produce', route: '/app/produce' }
     ];
 
     constructor(
