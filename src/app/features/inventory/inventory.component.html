@@ -1,0 +1,39 @@
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold text-primary-dark mb-6">Inventory Management</h1>
+
+    <app-loading-spinner *ngIf="loading" [fullScreen]="false"></app-loading-spinner>
+
+    <div *ngIf="!loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let item of inventory" class="bg-white rounded-lg shadow p-6">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800">{{ item.produceType }}</h3>
+                    <p class="text-sm text-gray-600">{{ item.location }}</p>
+                </div>
+                <span [class]="getStockColor(item.quantity)" class="px-3 py-1 rounded-full text-xs font-medium">
+                    {{ getStockLevel(item.quantity).toUpperCase() }}
+                </span>
+            </div>
+
+            <div class="mb-4">
+                <div class="text-3xl font-bold text-primary">
+                    {{ item.quantity }} <span class="text-lg text-gray-600">{{ item.unit }}</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Last updated: {{ item.lastUpdated || 'N/A' }}</p>
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <input #newQty type="number" [value]="item.quantity" class="flex-1 px-3 py-2 border rounded-lg text-sm"
+                    placeholder="New quantity" />
+                <button (click)="updateQuantity(item.id, +newQty.value)" [disabled]="updatingId === item.id"
+                    class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-dark disabled:opacity-50">
+                    {{ updatingId === item.id ? 'Updating...' : 'Update' }}
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="inventory.length === 0" class="col-span-3 text-center py-12 text-gray-500">
+            No inventory items found
+        </div>
+    </div>
+</div>

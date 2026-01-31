@@ -1,0 +1,89 @@
+<div class="container mx-auto">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-primary-dark">Delivery Scheduling</h1>
+        <button (click)="showCreateForm = !showCreateForm"
+            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark">
+            {{ showCreateForm ? 'Cancel' : '+ Schedule Delivery' }}
+        </button>
+    </div>
+
+    <!-- Create Form -->
+    <div *ngIf="showCreateForm" class="bg-white rounded-lg shadow p-6 mb-6">
+        <h2 class="text-xl font-bold mb-4">Schedule New Delivery</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Shipment</label>
+                <select [(ngModel)]="newDelivery.shipmentId" class="w-full px-3 py-2 border rounded-lg">
+                    <option value="0">Select Shipment</option>
+                    <option *ngFor="let shipment of shipments" [value]="shipment.id">
+                        #{{ shipment.id }} - {{ shipment.origin }} to {{ shipment.destination }}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Scheduled Date</label>
+                <input type="date" [(ngModel)]="newDelivery.scheduledDate" class="w-full px-3 py-2 border rounded-lg" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Driver Name</label>
+                <input type="text" [(ngModel)]="newDelivery.driverName" class="w-full px-3 py-2 border rounded-lg" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Vehicle Number</label>
+                <input type="text" [(ngModel)]="newDelivery.vehicleNumber" class="w-full px-3 py-2 border rounded-lg" />
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-1">Notes</label>
+                <textarea [(ngModel)]="newDelivery.notes" rows="3"
+                    class="w-full px-3 py-2 border rounded-lg"></textarea>
+            </div>
+        </div>
+        <button (click)="createDelivery()"
+            class="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark">
+            Schedule Delivery
+        </button>
+    </div>
+
+    <!-- Deliveries List -->
+    <app-loading-spinner *ngIf="loading" [fullScreen]="false"></app-loading-spinner>
+
+    <div *ngIf="!loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let delivery of deliveries" class="bg-white rounded-lg shadow p-6">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <p class="text-sm text-gray-600">Delivery #{{ delivery.id }}</p>
+                    <p class="font-bold">Shipment #{{ delivery.shipmentId }}</p>
+                </div>
+                <app-status-badge [status]="delivery.deliveryStatus"></app-status-badge>
+            </div>
+
+            <div class="space-y-2 mb-4">
+                <div class="flex items-center text-sm">
+                    <span class="text-gray-600 w-24">Date:</span>
+                    <span class="font-medium">{{ delivery.scheduledDate }}</span>
+                </div>
+                <div class="flex items-center text-sm" *ngIf="delivery.driverName">
+                    <span class="text-gray-600 w-24">Driver:</span>
+                    <span>{{ delivery.driverName }}</span>
+                </div>
+                <div class="flex items-center text-sm" *ngIf="delivery.vehicleNumber">
+                    <span class="text-gray-600 w-24">Vehicle:</span>
+                    <span>{{ delivery.vehicleNumber }}</span>
+                </div>
+            </div>
+
+            <div *ngIf="delivery.notes" class="mb-4 p-3 bg-gray-50 rounded text-sm">
+                {{ delivery.notes }}
+            </div>
+
+            <button *ngIf="delivery.deliveryStatus !== 'COMPLETED'" (click)="markAsCompleted(delivery.id)"
+                class="w-full bg-success text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm">
+                Mark as Completed
+            </button>
+        </div>
+
+        <div *ngIf="deliveries.length === 0" class="col-span-3 text-center py-12 text-gray-500">
+            No deliveries scheduled
+        </div>
+    </div>
+</div>

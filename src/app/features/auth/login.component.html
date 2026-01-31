@@ -1,0 +1,55 @@
+<div class="min-h-screen bg-background flex items-center justify-center px-4">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-primary">🌾 AgroMove</h1>
+            <p class="text-gray-600 mt-2">Farm Produce Logistics System</p>
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Username
+                </label>
+                <input type="text" id="username" formControlName="username"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Enter username" />
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                <input type="password" id="password" formControlName="password"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Enter password" />
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="error" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                {{ error }}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" [disabled]="loginForm.invalid || loading"
+                class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed">
+                <span *ngIf="!loading">Login</span>
+                <span *ngIf="loading">Logging in...</span>
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600 mb-2">
+                Don't have an account?
+                <a routerLink="/signup" class="text-primary font-medium hover:underline">
+                    Sign Up
+                </a>
+            </p>
+            <p class="text-xs text-gray-500">
+                <a routerLink="/" class="text-primary hover:underline">← Back to Home</a>
+            </p>
+        </div>
+    </div>
+</div>

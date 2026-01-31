@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-background">
+    <!-- Navbar -->
+    <nav class="bg-primary text-white shadow-md fixed top-0 left-0 right-0 z-10">
+        <div class="px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button (click)="toggleSidebar()" class="text-white hover:bg-primary-dark p-2 rounded">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">🌾 AgroMove</h1>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <span class="text-sm">{{ currentUser?.username }}</span>
+                <span class="text-xs bg-primary-light px-2 py-1 rounded">{{ currentUser?.role }}</span>
+                <button (click)="logout()" class="text-white hover:bg-primary-dark px-3 py-1 rounded text-sm">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <aside [class.hidden]="!isSidebarOpen"
+            class="fixed left-0 top-16 bottom-0 w-64 bg-white shadow-lg transition-all duration-300 overflow-y-auto">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li *ngFor="let item of menuItems">
+                        <a [routerLink]="item.route" routerLinkActive="bg-primary text-white"
+                            class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                            <span class="text-lg">{{ getIcon(item.icon) }}</span>
+                            <span>{{ item.label }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main [class.ml-64]="isSidebarOpen" class="flex-1 p-6 transition-all duration-300">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

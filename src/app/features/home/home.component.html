@@ -1,0 +1,201 @@
+<div class="landing-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo-section">
+                <span class="logo-icon">🌾</span>
+                <span class="logo-text">AgroMove</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-outline" (click)="navigateToLogin()">Sign In</button>
+                <button class="btn-primary" (click)="navigateToSignup()">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Transform Your
+                    <span class="gradient-text">Farm Logistics</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The complete platform for modern agricultural supply chain management.
+                    Track shipments, manage inventory, and optimize deliveries—all in one place.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-hero-primary" (click)="navigateToSignup()">
+                        Start Free Trial
+                        <span class="arrow">→</span>
+                    </button>
+                    <button class="btn-hero-secondary" (click)="navigateToLogin()">
+                        Watch Demo
+                        <span class="play-icon">▶</span>
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <span class="badge">✓ No Credit Card Required</span>
+                    <span class="badge">✓ 14-Day Free Trial</span>
+                    <span class="badge">✓ Setup in 5 Minutes</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <div class="preview-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="stat-card">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-info">
+                                <div class="stat-value">1,234</div>
+                                <div class="stat-label">Active Shipments</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🚚</div>
+                            <div class="stat-info">
+                                <div class="stat-value">856</div>
+                                <div class="stat-label">Deliveries</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-info">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">On-Time Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FEATURES</span>
+                <h2 class="section-title">Everything You Need to Succeed</h2>
+                <p class="section-subtitle">Powerful tools designed for modern agricultural logistics</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon shipment">🚚</div>
+                    <h3 class="feature-title">Smart Shipment Tracking</h3>
+                    <p class="feature-description">
+                        Real-time GPS tracking with automated status updates. Know exactly where your produce is at
+                        every moment.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Live Tracking</span>
+                        <span>Auto Updates</span>
+                        <span>Alerts</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon inventory">📦</div>
+                    <h3 class="feature-title">Intelligent Inventory</h3>
+                    <p class="feature-description">
+                        Color-coded stock levels with smart alerts. Never run out of stock or over-order again.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Low Stock Alerts</span>
+                        <span>Multi-location</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon delivery">📅</div>
+                    <h3 class="feature-title">Delivery Optimization</h3>
+                    <p class="feature-description">
+                        Schedule and optimize delivery routes. Assign drivers and track completion in real-time.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Route Planning</span>
+                        <span>Driver Management</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon analytics">📊</div>
+                    <h3 class="feature-title">Analytics Dashboard</h3>
+                    <p class="feature-description">
+                        Comprehensive insights at a glance. Make data-driven decisions with beautiful visualizations.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Real-time Data</span>
+                        <span>Custom Reports</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon catalog">🌾</div>
+                    <h3 class="feature-title">Produce Catalog</h3>
+                    <p class="feature-description">
+                        Manage your entire product catalog with categories, pricing, and specifications.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Categories</span>
+                        <span>Bulk Upload</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon security">🔒</div>
+                    <h3 class="feature-title">Secure & Reliable</h3>
+                    <p class="feature-description">
+                        Enterprise-grade security with role-based access control and data encryption.
+                    </p>
+                    <div class="feature-tags">
+                        <span>JWT Auth</span>
+                        <span>Role-based</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Ready to Revolutionize Your Farm Logistics?</h2>
+            <p class="cta-subtitle">Join hundreds of farmers already using AgroMove to streamline their operations</p>
+            <div class="cta-buttons">
+                <button class="btn-cta-primary" (click)="navigateToSignup()">
+                    Start Free Trial
+                    <span class="arrow">→</span>
+                </button>
+                <button class="btn-cta-secondary" (click)="navigateToLogin()">
+                    Sign In to Your Account
+                </button>
+            </div>
+            <p class="cta-note">No credit card required • 14-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">🌾</span>
+                    <span class="logo-text">AgroMove</span>
+                </div>
+                <p class="footer-tagline">Streamlining agricultural supply chains worldwide</p>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2026 AgroMove. Built for farmers, by tech enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+</div>
