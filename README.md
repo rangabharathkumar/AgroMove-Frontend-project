@@ -102,7 +102,7 @@ The API URL is configured in environment files:
 - Development: `src/environments/environment.ts`
 - Production: `src/environments/environment.prod.ts`
 
-Current API: `https://agromove-farm-produce-logistics-api.onrender.com/api`
+Current API: `https://agromove-farm-produce-logistics-api.onrender.com/api/api`
 
 ## 📦 Deployment
 
