@@ -1,1 +1,70 @@
-/* Layout specific styles */
+/* Layout Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 4rem;
+    bottom: 0;
+    width: 16rem;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s ease;
+    z-index: 30;
+}
+
+.sidebar:not(.open) {
+    transform: translateX(-100%);
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+.main-content {
+    flex: 1;
+    padding: 1.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .main-content.with-sidebar {
+        margin-left: 16rem;
+    }
+}
+
+/* User Info Responsive */
+@media (max-width: 640px) {
+    .user-name {
+        display: none;
+    }
+}
+
+/* Sidebar Responsive Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+    .sidebar-overlay {
+        display: none;
+    }
+}

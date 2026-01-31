@@ -10,14 +10,14 @@ import { User } from '../../shared/models/models';
 })
 export class LayoutComponent {
     currentUser: User | null = null;
-    isSidebarOpen = true;
+    isSidebarOpen = window.innerWidth >= 1024;
+    windowWidth = window.innerWidth;
 
     menuItems = [
         { icon: 'home', label: 'Dashboard', route: '/app/dashboard' },
         { icon: 'truck', label: 'Shipments', route: '/app/shipments' },
         { icon: 'package', label: 'Inventory', route: '/app/inventory' },
-        { icon: 'calendar', label: 'Deliveries', route: '/app/deliveries' },
-        { icon: 'leaf', label: 'Produce', route: '/app/produce' }
+        { icon: 'calendar', label: 'Deliveries', route: '/app/deliveries' }
     ];
 
     constructor(
@@ -31,6 +31,12 @@ export class LayoutComponent {
 
     toggleSidebar(): void {
         this.isSidebarOpen = !this.isSidebarOpen;
+    }
+
+    closeSidebarOnMobile(): void {
+        if (window.innerWidth < 768) {
+            this.isSidebarOpen = false;
+        }
     }
 
     logout(): void {

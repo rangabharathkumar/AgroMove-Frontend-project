@@ -32,12 +32,6 @@ export class ShipmentService {
         return this.http.put<Shipment>(`${this.apiUrl}/${id}`, shipment);
     }
 
-    updateStatus(id: number, status: string): Observable<Shipment> {
-        return this.http.patch<Shipment>(`${this.apiUrl}/${id}/status`, null, {
-            params: { status }
-        });
-    }
-
     deleteShipment(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }

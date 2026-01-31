@@ -32,10 +32,6 @@ export class DeliveryService {
         return this.http.put<Delivery>(`${this.apiUrl}/${id}`, delivery);
     }
 
-    markAsCompleted(id: number): Observable<Delivery> {
-        return this.http.patch<Delivery>(`${this.apiUrl}/${id}/complete`, null);
-    }
-
     deleteDelivery(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }

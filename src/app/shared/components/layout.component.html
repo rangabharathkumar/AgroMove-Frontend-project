@@ -13,7 +13,7 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <span class="text-sm">{{ currentUser?.username }}</span>
+                <span class="text-sm user-name">{{ currentUser?.username }}</span>
                 <span class="text-xs bg-primary-light px-2 py-1 rounded">{{ currentUser?.role }}</span>
                 <button (click)="logout()" class="text-white hover:bg-primary-dark px-3 py-1 rounded text-sm">
                     Logout
@@ -23,13 +23,16 @@
     </nav>
 
     <div class="flex pt-16">
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" [class.active]="isSidebarOpen" (click)="toggleSidebar()"></div>
+
         <!-- Sidebar -->
-        <aside [class.hidden]="!isSidebarOpen"
-            class="fixed left-0 top-16 bottom-0 w-64 bg-white shadow-lg transition-all duration-300 overflow-y-auto">
+        <aside class="sidebar" [class.open]="isSidebarOpen">
             <nav class="p-4">
                 <ul class="space-y-2">
                     <li *ngFor="let item of menuItems">
                         <a [routerLink]="item.route" routerLinkActive="bg-primary text-white"
+                            (click)="closeSidebarOnMobile()"
                             class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors">
                             <span class="text-lg">{{ getIcon(item.icon) }}</span>
                             <span>{{ item.label }}</span>
@@ -40,7 +43,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main [class.ml-64]="isSidebarOpen" class="flex-1 p-6 transition-all duration-300">
+        <main class="main-content" [class.with-sidebar]="isSidebarOpen">
             <router-outlet></router-outlet>
         </main>
     </div>

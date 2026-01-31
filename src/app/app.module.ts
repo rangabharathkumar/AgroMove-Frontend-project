@@ -19,9 +19,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { ShipmentsComponent } from './features/shipments/shipments.component';
 import { InventoryComponent } from './features/inventory/inventory.component';
 import { DeliveriesComponent } from './features/deliveries/deliveries.component';
-import { ProduceComponent } from './features/produce/produce.component';
 import { LayoutComponent } from './shared/components/layout.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +30,6 @@ import { LayoutComponent } from './shared/components/layout.component';
     ShipmentsComponent,
     InventoryComponent,
     DeliveriesComponent,
-    ProduceComponent,
     LayoutComponent
   ],
   imports: [

@@ -25,16 +25,17 @@
                 <input type="date" [(ngModel)]="newDelivery.scheduledDate" class="w-full px-3 py-2 border rounded-lg" />
             </div>
             <div>
-                <label class="block text-sm font-medium mb-1">Driver Name</label>
-                <input type="text" [(ngModel)]="newDelivery.driverName" class="w-full px-3 py-2 border rounded-lg" />
+                <label class="block text-sm font-medium mb-1">Carrier Name</label>
+                <input type="text" [(ngModel)]="newDelivery.carrierName" class="w-full px-3 py-2 border rounded-lg" />
             </div>
             <div>
-                <label class="block text-sm font-medium mb-1">Vehicle Number</label>
-                <input type="text" [(ngModel)]="newDelivery.vehicleNumber" class="w-full px-3 py-2 border rounded-lg" />
+                <label class="block text-sm font-medium mb-1">Tracking Number</label>
+                <input type="text" [(ngModel)]="newDelivery.trackingNumber"
+                    class="w-full px-3 py-2 border rounded-lg" />
             </div>
             <div class="md:col-span-2">
-                <label class="block text-sm font-medium mb-1">Notes</label>
-                <textarea [(ngModel)]="newDelivery.notes" rows="3"
+                <label class="block text-sm font-medium mb-1">Delivery Notes</label>
+                <textarea [(ngModel)]="newDelivery.deliveryNotes" rows="3"
                     class="w-full px-3 py-2 border rounded-lg"></textarea>
             </div>
         </div>
@@ -59,27 +60,22 @@
 
             <div class="space-y-2 mb-4">
                 <div class="flex items-center text-sm">
-                    <span class="text-gray-600 w-24">Date:</span>
+                    <span class="text-gray-600 w-32">Date:</span>
                     <span class="font-medium">{{ delivery.scheduledDate }}</span>
                 </div>
-                <div class="flex items-center text-sm" *ngIf="delivery.driverName">
-                    <span class="text-gray-600 w-24">Driver:</span>
-                    <span>{{ delivery.driverName }}</span>
+                <div class="flex items-center text-sm" *ngIf="delivery.carrierName">
+                    <span class="text-gray-600 w-32">Carrier:</span>
+                    <span>{{ delivery.carrierName }}</span>
                 </div>
-                <div class="flex items-center text-sm" *ngIf="delivery.vehicleNumber">
-                    <span class="text-gray-600 w-24">Vehicle:</span>
-                    <span>{{ delivery.vehicleNumber }}</span>
+                <div class="flex items-center text-sm" *ngIf="delivery.trackingNumber">
+                    <span class="text-gray-600 w-32">Tracking:</span>
+                    <span>{{ delivery.trackingNumber }}</span>
                 </div>
             </div>
 
-            <div *ngIf="delivery.notes" class="mb-4 p-3 bg-gray-50 rounded text-sm">
-                {{ delivery.notes }}
+            <div *ngIf="delivery.deliveryNotes" class="mb-4 p-3 bg-gray-50 rounded text-sm">
+                {{ delivery.deliveryNotes }}
             </div>
-
-            <button *ngIf="delivery.deliveryStatus !== 'COMPLETED'" (click)="markAsCompleted(delivery.id)"
-                class="w-full bg-success text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm">
-                Mark as Completed
-            </button>
         </div>
 
         <div *ngIf="deliveries.length === 0" class="col-span-3 text-center py-12 text-gray-500">

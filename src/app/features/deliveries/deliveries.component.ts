@@ -18,9 +18,9 @@ export class DeliveriesComponent implements OnInit {
         shipmentId: 0,
         scheduledDate: '',
         deliveryStatus: 'SCHEDULED',
-        driverName: '',
-        vehicleNumber: '',
-        notes: ''
+        carrierName: '',
+        trackingNumber: '',
+        deliveryNotes: ''
     };
 
     constructor(
@@ -72,16 +72,9 @@ export class DeliveriesComponent implements OnInit {
             shipmentId: 0,
             scheduledDate: '',
             deliveryStatus: 'SCHEDULED',
-            driverName: '',
-            vehicleNumber: '',
-            notes: ''
+            carrierName: '',
+            trackingNumber: '',
+            deliveryNotes: ''
         };
-    }
-
-    markAsCompleted(id: number): void {
-        this.deliveryService.markAsCompleted(id).subscribe({
-            next: () => this.loadDeliveries(),
-            error: (err) => console.error('Error marking delivery as completed:', err)
-        });
     }
 }

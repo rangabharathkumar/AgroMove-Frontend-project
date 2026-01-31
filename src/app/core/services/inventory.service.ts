@@ -16,23 +16,19 @@ export class InventoryService {
         return this.http.get<Inventory[]>(this.apiUrl);
     }
 
-    getInventoryByLocation(location: string): Observable<Inventory[]> {
-        return this.http.get<Inventory[]>(`${this.apiUrl}/location/${location}`);
-    }
-
     getInventoryById(id: number): Observable<Inventory> {
         return this.http.get<Inventory>(`${this.apiUrl}/${id}`);
     }
 
-    updateInventory(id: number, quantity: number): Observable<Inventory> {
-        return this.http.patch<Inventory>(`${this.apiUrl}/${id}`, null, {
-            params: { quantity: quantity.toString() }
-        });
+    createInventory(inventory: Partial<Inventory>): Observable<Inventory> {
+        return this.http.post<Inventory>(this.apiUrl, inventory);
     }
 
-    getLowStockItems(threshold: number = 10): Observable<Inventory[]> {
-        return this.http.get<Inventory[]>(`${this.apiUrl}/low-stock`, {
-            params: { threshold: threshold.toString() }
-        });
+    updateInventory(id: number, inventory: Partial<Inventory>): Observable<Inventory> {
+        return this.http.put<Inventory>(`${this.apiUrl}/${id}`, inventory);
+    }
+
+    deleteInventory(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
 }

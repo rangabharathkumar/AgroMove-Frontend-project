@@ -20,6 +20,8 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 /FRONTEND_GUIDE.md
+/AgroMove-Farm-Produce-Logistics-API-HLD.md
+/AgroMove-Farm-Produce-Logistics-API-HLD.pdf
 
 # Visual Studio Code
 .vscode/*

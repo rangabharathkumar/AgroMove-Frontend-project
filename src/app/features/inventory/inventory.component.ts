@@ -45,8 +45,12 @@ export class InventoryComponent implements OnInit {
     }
 
     updateQuantity(id: number, newQuantity: number): void {
+        const item = this.inventory.find(i => i.id === id);
+        if (!item) return;
+
         this.updatingId = id;
-        this.inventoryService.updateInventory(id, newQuantity).subscribe({
+        const updatedItem = { ...item, quantity: newQuantity };
+        this.inventoryService.updateInventory(id, updatedItem).subscribe({
             next: () => {
                 this.loadInventory();
                 this.updatingId = null;

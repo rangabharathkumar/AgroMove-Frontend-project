@@ -19,9 +19,10 @@ export class ShipmentsComponent implements OnInit {
         origin: '',
         destination: '',
         produceType: '',
-        quantity: 0,
+        weight: 0,
         status: 'PENDING',
-        estimatedDelivery: ''
+        estimatedDelivery: '',
+        description: ''
     };
 
     constructor(private shipmentService: ShipmentService) { }
@@ -80,16 +81,10 @@ export class ShipmentsComponent implements OnInit {
             origin: '',
             destination: '',
             produceType: '',
-            quantity: 0,
+            weight: 0,
             status: 'PENDING',
-            estimatedDelivery: ''
+            estimatedDelivery: '',
+            description: ''
         };
-    }
-
-    updateStatus(id: number, newStatus: string): void {
-        this.shipmentService.updateStatus(id, newStatus).subscribe({
-            next: () => this.loadShipments(),
-            error: (err) => console.error('Error updating status:', err)
-        });
     }
 }

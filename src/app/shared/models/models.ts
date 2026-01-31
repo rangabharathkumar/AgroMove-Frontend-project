@@ -24,16 +24,17 @@ export interface Shipment {
     origin: string;
     destination: string;
     status: 'PENDING' | 'IN_TRANSIT' | 'DELIVERED';
-    quantity: number;
+    weight: number;
     produceType: string;
     estimatedDelivery: string;
+    description?: string;
     actualDelivery?: string;
     createdAt?: string;
 }
 
 export interface Inventory {
     id: number;
-    location: string;
+    warehouseLocation: string;
     produceType: string;
     quantity: number;
     unit: string;
@@ -45,14 +46,14 @@ export interface Delivery {
     shipmentId: number;
     scheduledDate: string;
     deliveryStatus: 'SCHEDULED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
-    driverName?: string;
-    vehicleNumber?: string;
-    notes?: string;
+    carrierName?: string;
+    trackingNumber?: string;
+    deliveryNotes?: string;
 }
 
 export interface Produce {
     id: number;
-    name: string;
+    produceType: string;
     category: 'FRUIT' | 'VEGETABLE' | 'GRAIN' | 'OTHER';
     unit: string;
     description?: string;

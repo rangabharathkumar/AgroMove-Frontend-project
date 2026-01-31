@@ -8,7 +8,7 @@
             <div class="flex justify-between items-start mb-4">
                 <div>
                     <h3 class="text-lg font-bold text-gray-800">{{ item.produceType }}</h3>
-                    <p class="text-sm text-gray-600">{{ item.location }}</p>
+                    <p class="text-sm text-gray-600">{{ item.warehouseLocation }}</p>
                 </div>
                 <span [class]="getStockColor(item.quantity)" class="px-3 py-1 rounded-full text-xs font-medium">
                     {{ getStockLevel(item.quantity).toUpperCase() }}

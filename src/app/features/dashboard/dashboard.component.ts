@@ -52,21 +52,14 @@ export class DashboardComponent implements OnInit {
         this.inventoryService.getAllInventory().subscribe({
             next: (inventory) => {
                 this.stats.totalInventory = inventory.length;
+                this.lowStockInventory = inventory.filter(item => item.quantity <= 20).slice(0, 5);
+                this.stats.lowStockItems = inventory.filter(item => item.quantity <= 20).length;
                 this.loading = false;
             },
             error: (err) => {
                 console.error('Error loading inventory:', err);
                 this.loading = false;
             }
-        });
-
-        // Load low stock items
-        this.inventoryService.getLowStockItems(20).subscribe({
-            next: (items) => {
-                this.stats.lowStockItems = items.length;
-                this.lowStockInventory = items.slice(0, 5);
-            },
-            error: (err) => console.error('Error loading low stock:', err)
         });
     }
 }
