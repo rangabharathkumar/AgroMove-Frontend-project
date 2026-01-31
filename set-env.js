@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+console.log('--- Starting Environment Variable Injection ---');
+
 // The path to the environment files
 const envPath = path.join(__dirname, 'src', 'environments', 'environment.prod.ts');
 const devEnvPath = path.join(__dirname, 'src', 'environments', 'environment.ts');
@@ -20,10 +22,24 @@ const devEnvConfigFile = `export const environment = {
 };
 `;
 
+// Ensure directories exist
+const environmentsDir = path.join(__dirname, 'src', 'environments');
+if (!fs.existsSync(environmentsDir)) {
+    console.log('Creating directory:', environmentsDir);
+    fs.mkdirSync(environmentsDir, { recursive: true });
+}
+
 console.log('Generating environment files with API_URL:', apiUrl);
 
-// Write the files
-fs.writeFileSync(envPath, envConfigFile);
-fs.writeFileSync(devEnvPath, devEnvConfigFile);
+try {
+    // Write the files
+    fs.writeFileSync(envPath, envConfigFile);
+    console.log('Successfully wrote:', envPath);
+    fs.writeFileSync(devEnvPath, devEnvConfigFile);
+    console.log('Successfully wrote:', devEnvPath);
+} catch (error) {
+    console.error('Error writing environment files:', error);
+    process.exit(1);
+}
 
-console.log('Environment files generated successfully.');
+console.log('--- Environment Injection Completed ---');

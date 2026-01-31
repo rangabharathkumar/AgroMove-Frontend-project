@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node set-env.js && ng serve",
-    "build": "node set-env.js && ng build",
+    "build": "node set-env.js && ng build && echo 'Build complete. Checking dist folder...' && ls -d dist/*",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
